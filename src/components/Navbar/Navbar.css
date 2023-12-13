@@ -1,0 +1,13 @@
+.create-button{
+    transition: all 0.5s;
+    background-color: rgba(124, 93, 250, 1);
+}
+.create-button:hover{
+    background-color: rgba(146, 119, 255, 1);
+    transition: all 0.5s;
+}
+.select-box{
+    z-index: 9999;
+    background: #fff;
+    transition: all 0.5s;
+}

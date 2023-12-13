@@ -1,0 +1,28 @@
+.edit-button {
+  background-color: #f9fafe;
+  color: #7e88c3;
+  transition: all 0.5s;
+}
+.edit-button:hover{
+    background-color: #DFE3FA;
+    transition: all 0.5s;
+}
+.delete-button {
+  transition: all 0.5s;
+  background-color: #ec5757;
+}
+.delete-button:hover {
+  transition: all 0.5s;
+  background-color: #ff9797;
+}
+.paid-button {
+  background-color: #7c5dfa;
+  transition: all 0.5s;
+}
+.paid-button:hover {
+  background-color: #9277ff;
+  transition: all 0.5s;
+}
+.color-ink{
+  color: #7E88C3;
+}

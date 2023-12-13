@@ -1,0 +1,14 @@
+#email::placeholder{
+    color: rgba(126, 136, 195, 0.477);
+}
+#password::placeholder{
+    color: rgba(126, 136, 195, 0.477);
+}
+.login-button{
+    background-color: rgba(124, 93, 250, 1);
+    transition: all 0.5s;
+}
+.login-button:hover{
+    transition: all 0.5s;
+    background-color: rgba(146, 119, 255, 1);
+}
