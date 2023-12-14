@@ -5,5 +5,5 @@ export { default as OneInvoice } from './InvoicePage/OneInvoice';
 export { default as AddInvoice } from "./AddInvoice/AddInvoice";
 export { default as EditForm } from "./EditInvoice/EditForm";
 export { default as FormAdd } from './AddInvoice/FormAdd';
-export { default as Login } from "./login/login";
+export { default as Login } from "./Login/Login";
 export { default as Home } from "./Home/Home";

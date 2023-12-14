@@ -10,7 +10,7 @@ import { LabelForm } from "../../components/index";
 import { Formik, Form } from "formik";
 import { Input } from "formik-antd";
 import "../../assets/output.css";
-import "./login.css";
+import "./Login.css";
 
 function Login() {
   const dispatch = useDispatch();
