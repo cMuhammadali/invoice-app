@@ -1,8 +1,8 @@
-import ErrorForm from "../../components/ErrorForm/ErrorForm.jsx";
-import { InputComponent } from "../../components/index.js";
+import { InputComponent } from "../../components/index";
+import { ErrorForm } from "../../components/index";
 import { LabelForm } from "../../components/index";
 import { DatePicker, Select } from "formik-antd";
-import { todoSlice } from "../../store/Store.js";
+import { todoSlice } from "../../store/store-";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Formik, Form } from "formik";

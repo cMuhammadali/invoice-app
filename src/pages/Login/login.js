@@ -1,10 +1,10 @@
 import { loginUser } from "../../services/auth-slice/auth-slice";
 import { validationSchemaLogin } from "../../validations/index";
-import ErrorForm from "../../components/ErrorForm/ErrorForm";
 import { useNavigate, useLocation } from "react-router-dom";
 import { InputComponent } from "../../components/index";
 import { useDispatch, useSelector } from "react-redux";
 import { ModalError } from "../../components/index";
+import { ErrorForm } from "../../components/index";
 import React, { useEffect, useState } from "react";
 import { LabelForm } from "../../components/index";
 import { Formik, Form } from "formik";
