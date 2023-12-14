@@ -10,7 +10,7 @@ import React, { useEffect, useState } from "react";
 import { Formik, Form } from "formik";
 import { Input } from "formik-antd";
 import "../../assets/output.css";
-import "./Login.css";
+import "./login.css";
 
 function Login() {
   const dispatch = useDispatch();
