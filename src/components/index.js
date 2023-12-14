@@ -1,11 +1,12 @@
+export { default as NotFoundList } from './NotFoundList/NotFoundList';
 export { default as InputComponent } from './input-component/input';
 export { default as LabelForm } from './label-component/label-form';
 export { default as ErrorForm } from './error-form/error-form';
-export { default as ModalDelete } from "./modal/modal-delete";
-export { default as ModalError } from "./modal/modal-error";
-export { default as Rightbar } from "./rightbar/rightbar";
-export { default as Sidebar } from './sidebar/sidebar';
-export { default as Navbar } from "./navbar/navbar";
+export { default as ModalDelete } from "./Modal/ModalDelete";
+export { default as ModalError } from "./Modal/ModalError";
+export { default as Rightbar } from "./Rightbar/Rightbar";
+export { default as Sidebar } from './Sidebar/Sidebar';
+export { default as Navbar } from "./Navbar/Navbar";
 export { default as Layout } from './layout/layout';
 export { default as List } from "./list/list";
 export { default as Main } from "./main/main";
