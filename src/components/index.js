@@ -1,4 +1,5 @@
-export { default as InputComponent } from './InputComponent/Input.jsx'
+export { default as InputComponent } from './input-component/input';
+export { default as LabelForm } from './label-component/label-form';
 export { default as ModalDelete } from "./modal/modal-delete";
 export { default as ModalError } from "./modal/modal-error";
 export { default as Rightbar } from "./rightbar/rightbar";

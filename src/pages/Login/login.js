@@ -1,4 +1,3 @@
-import LabelForm from "../../components/LabelComponent/LabelForm";
 import { loginUser } from "../../services/auth-slice/auth-slice";
 import { validationSchemaLogin } from "../../validations/index";
 import ErrorForm from "../../components/ErrorForm/ErrorForm";
@@ -7,6 +6,7 @@ import { InputComponent } from "../../components/index";
 import { useDispatch, useSelector } from "react-redux";
 import { ModalError } from "../../components/index";
 import React, { useEffect, useState } from "react";
+import { LabelForm } from "../../components/index";
 import { Formik, Form } from "formik";
 import { Input } from "formik-antd";
 import "../../assets/output.css";

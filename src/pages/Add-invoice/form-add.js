@@ -1,6 +1,6 @@
-import LabelForm from "../../components/LabelComponent/LabelForm.jsx";
 import ErrorForm from "../../components/ErrorForm/ErrorForm.jsx";
 import { InputComponent } from "../../components/index.js";
+import { LabelForm } from "../../components/index";
 import { DatePicker, Select } from "formik-antd";
 import { todoSlice } from "../../store/Store.js";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +22,8 @@ export default function FormAdd() {
     clientPaymentTerms: Yup.string().required("Can't be empty"),
     clientDesc: Yup.string().required("Can't be empty"),
     price: Yup.number()
-      .min(100, "Must be at least 100").max(1000, "Must be less than 1000")
+      .min(100, "Must be at least 100")
+      .max(1000, "Must be less than 1000")
       .required("Can't be empty"),
   });
 
