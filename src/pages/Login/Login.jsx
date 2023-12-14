@@ -1,5 +1,5 @@
 import LabelForm from "../../components/LabelComponent/LabelForm";
-import { loginUser } from "../../services/authSlice/authSlice";
+import { loginUser } from "../../services/auth-slice/auth-slice";
 import { validationSchemaLogin } from '../../validations/index';
 import ErrorForm from "../../components/ErrorForm/ErrorForm";
 import ModalError from "../../components/Modal/Modal-error";

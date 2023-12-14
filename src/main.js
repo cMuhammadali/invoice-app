@@ -1,14 +1,14 @@
 import { BrowserRouter as Router } from "react-router-dom";
-import { ThemeProvider } from "./theme.jsx";
-import { store } from "./store/Store.js";
+import React, { StrictMode } from "react";
+import { ThemeProvider } from "./theme";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
+import { store } from "./store/store";
 import "./assets/index.css";
-import App from "./App.jsx";
-import React from "react";
+import App from "./app";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <StrictMode>
     <Router>
       <ThemeProvider>
         <Provider store={store}>
@@ -16,5 +16,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         </Provider>
       </ThemeProvider>
     </Router>
-  </React.StrictMode>
+  </StrictMode>
 );

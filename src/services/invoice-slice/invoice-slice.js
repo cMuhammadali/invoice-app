@@ -1,4 +1,4 @@
-import { createInvoice as createInvoiceService } from "../invoiceService/invoiceService";
+import { createInvoice as createInvoiceService } from "../invoice-service/invoice-service";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const createNewInvoice = createAsyncThunk(
