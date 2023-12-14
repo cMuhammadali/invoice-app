@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { EditForm } from "../index.js";
+import { EditForm } from "../index";
 
 export default function EditInvoice() {
   const navigate = useNavigate();
