@@ -1,9 +1,14 @@
-import { Login, Home, AddInvoice, InvoicePage } from "./pages/index";
 import { Route, Routes } from "react-router-dom";
-import { EditInvoice } from './pages/index.js';
 import { Main } from "./components/index.js";
+import {
+  Login,
+  Home,
+  AddInvoice,
+  InvoicePage,
+  EditInvoice,
+} from "./pages/Index";
 
-function App() {
+export default function App() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
@@ -17,5 +22,3 @@ function App() {
     </Routes>
   );
 }
-
-export default App;

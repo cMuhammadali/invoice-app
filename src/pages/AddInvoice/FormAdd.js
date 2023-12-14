@@ -7,7 +7,7 @@ import { todoSlice } from "../../Store/Store";
 import { useDispatch } from "react-redux";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import "./form.css";
+import "./Form.css";
 
 export default function FormAdd() {
   const validationSchemaAddInvoice = Yup.object().shape({
