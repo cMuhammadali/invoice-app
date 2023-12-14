@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import "./Form.css";
+import "./form.css";
 
 export default function FormAdd() {
   const validationSchemaAddInvoice = Yup.object().shape({

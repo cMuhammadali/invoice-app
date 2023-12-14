@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Form from "./Form";
+import FormAdd from "./form-add";
 
 export default function AddInvoice() {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ export default function AddInvoice() {
       </div>
 
       <div>
-        <Form />
+        <FormAdd />
       </div>
     </div>
   );
