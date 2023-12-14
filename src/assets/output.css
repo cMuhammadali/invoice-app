@@ -564,16 +564,8 @@ video {
   left: 2rem;
 }
 
-.right-0 {
-  right: 0px;
-}
-
 .top-12 {
   top: 3rem;
-}
-
-.top-28 {
-  top: 7rem;
 }
 
 .top-4 {
@@ -588,16 +580,8 @@ video {
   top: 70px;
 }
 
-.bottom-10 {
-  bottom: 2.5rem;
-}
-
 .z-50 {
   z-index: 50;
-}
-
-.clear-left {
-  clear: left;
 }
 
 .ml-2 {
@@ -632,12 +616,12 @@ video {
   margin-right: 1rem;
 }
 
-.mt-10 {
-  margin-top: 2.5rem;
+.mt-1 {
+  margin-top: 0.25rem;
 }
 
-.mt-11 {
-  margin-top: 2.75rem;
+.mt-10 {
+  margin-top: 2.5rem;
 }
 
 .mt-12 {
@@ -670,10 +654,6 @@ video {
 
 .mt-8 {
   margin-top: 2rem;
-}
-
-.mt-1 {
-  margin-top: 0.25rem;
 }
 
 .flex {
@@ -752,22 +732,6 @@ video {
   width: 100%;
 }
 
-.w-1 {
-  width: 0.25rem;
-}
-
-.w-11 {
-  width: 2.75rem;
-}
-
-.w-screen {
-  width: 100vw;
-}
-
-.w-auto {
-  width: auto;
-}
-
 .flex-auto {
   flex: 1 1 auto;
 }
@@ -825,10 +789,6 @@ video {
   border-top-right-radius: 16px;
 }
 
-.border-2 {
-  border-width: 2px;
-}
-
 .border-t-2 {
   border-top-width: 2px;
 }
@@ -850,6 +810,11 @@ video {
 
 .bg-greenPaid {
   background-color: rgba(51, 214, 159, 1);
+}
+
+.bg-ink {
+  --tw-bg-opacity: 1;
+  background-color: rgb(126 136 195 / var(--tw-bg-opacity));
 }
 
 .bg-inkHeader1 {
@@ -889,10 +854,6 @@ video {
   background-color: rgb(255 249 240 / var(--tw-bg-opacity));
 }
 
-.p-12 {
-  padding: 3rem;
-}
-
 .p-2 {
   padding: 0.5rem;
 }
@@ -909,17 +870,18 @@ video {
   padding: 1.5rem;
 }
 
-.p-1 {
-  padding: 0.25rem;
-}
-
-.p-8 {
-  padding: 2rem;
+.p-12 {
+  padding: 3rem;
 }
 
 .px-10 {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
+}
+
+.px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .px-3 {
@@ -967,6 +929,16 @@ video {
   padding-bottom: 2rem;
 }
 
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.py-7 {
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
+}
+
 .pr-4 {
   padding-right: 1rem;
 }
@@ -991,6 +963,11 @@ video {
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .text-sm {
@@ -1049,8 +1026,4 @@ video {
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.hover\:no-underline:hover {
-  text-decoration-line: none;
 }
