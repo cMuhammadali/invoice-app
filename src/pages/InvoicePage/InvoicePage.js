@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import OneInvoice from "./one-invoice";
+import OneInvoice from "./OneInvoice";
 
 export default function InvoicePage() {
   const navigate = useNavigate();

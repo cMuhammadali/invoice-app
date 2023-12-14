@@ -1,8 +1,8 @@
 import { ModalDelete } from "../../components/index";
-import InvoiceCenter from "./invoice-center";
+import InvoiceCenter from "./InvoiceCenter";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import "./one-invoice.css";
+import "./OneInvoice.css";
 
 export default function OneInvoice() {
   const [isTrue, setIsTrue] = useState(false);
