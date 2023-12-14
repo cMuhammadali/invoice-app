@@ -1,5 +1,5 @@
-import { loginUser } from "../../services/auth-slice/auth-slice";
 import { validationSchemaLogin } from "../../Validations/Index";
+import { loginUser } from "../../services/AuthSlice/AuthSlice";
 import { useNavigate, useLocation } from "react-router-dom";
 import { InputComponent } from "../../components/index";
 import { useDispatch, useSelector } from "react-redux";

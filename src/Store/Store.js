@@ -1,6 +1,6 @@
-import invoiceReducer from "../services/invoice-slice/invoice-slice";
+import invoiceReducer from "../services/InvoiceSlice/InvoiceSlice";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
-import authReducer from "../services/auth-slice/auth-slice";
+import authReducer from "../services/AuthSlice/AuthSlice";
 
 export const todoSlice = createSlice({
   name: "invoices",
