@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import "./list.css";
+import "./List.css";
 
 export default function List() {
   const invoices = useSelector((state) => state.todo);
