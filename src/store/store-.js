@@ -3,7 +3,7 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 import authReducer from "../services/auth-slice/auth-slice";
 
 export const todoSlice = createSlice({
-  name: "todo",
+  name: "invoices",
   initialState: [],
   reducers: {
     addTodo: (state, { payload }) => {

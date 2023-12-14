@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./list.css";
 
 export default function List() {
-  const todos = useSelector((state) => state.todo);
+  const invoices = useSelector((state) => state.todo);
 
   return (
     <div className="w-full h-96 mt-14">
@@ -62,7 +62,7 @@ export default function List() {
           alt="path"
         />
       </div>
-      {todos?.map((value) => {
+      {invoices?.map((value) => {
         console.log("value", value?.values?.clientDesc);
         return (
           <div className="p-6 rounded-md flex text-center items-center mt-6 mr-2 ml-2 shadow-box">
