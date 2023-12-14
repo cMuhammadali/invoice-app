@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./navbar.css";
 
 export default function Navbar() {
-  const [isTrue, setIsTrue] = useState(false);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   return (
     <div className="w-full flex">
@@ -24,12 +24,13 @@ export default function Navbar() {
               <div
                 className="flex items-center"
                 style={{ cursor: "pointer" }}
-                onClick={() => setIsTrue(!isTrue)}
+                onClick={() => setIsFilterOpen(!isFilterOpen)}
               >
                 <span className="font-spartan font-bold">Filter by status</span>
-                {isTrue === true ? (
+                {isFilterOpen ? (
                   <img
                     src="/src/assets/icons/UpPath.svg"
+                    aria-hidden={true}
                     alt="Up"
                     className="ml-3"
                   />
@@ -38,11 +39,12 @@ export default function Navbar() {
                     src="/src/assets/icons/Path 2.svg"
                     alt="path2"
                     className="ml-3"
+                    aria-hidden={true}
                   />
                 )}
               </div>
 
-              {isTrue && (
+              {isFilterOpen && (
                 <div className="p-3 shadow-xl w-40 absolute rounded-md z-50 select-box">
                   <ul>
                     <li
