@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import "./List.css";
+import "./list.css";
 
 export default function List() {
   const todos = useSelector((state) => state.todo);

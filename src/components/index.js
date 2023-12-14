@@ -4,5 +4,5 @@ export { default as ModalError } from "./modal/modal-error";
 export { default as Rightbar } from "./rightbar/rightbar";
 export { default as Sidebar } from './sidebar/sidebar';
 export { default as Navbar } from "./navbar/navbar";
-export { default as Main } from "./Main/Main.jsx";
-export { default as List } from "./List/List.jsx";
+export { default as List } from "./list/list";
+export { default as Main } from "./main/main";

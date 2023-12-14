@@ -1,4 +1,4 @@
-import List from "../List/List";
+import { List } from "../index";
 
 export default function Rightbar() {
   return <List />;
