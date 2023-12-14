@@ -1,1 +1,1 @@
-export { default as validationSchemaLogin } from "./login-validate";
+export { default as validationSchemaLogin } from "./LoginValidate";
