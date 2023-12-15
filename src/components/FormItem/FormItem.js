@@ -13,7 +13,9 @@ function FormItem({ label, children, ...props }) {
         </label>
       </div>
       {meta.touched && meta.error ? (
-        <div className="text-textRed600 absolute bottom font-spartan text-base">{meta.error}</div>
+        <div className="text-textRed600 absolute bottom font-spartan text-base">
+          {meta.error}
+        </div>
       ) : null}
     </div>
   );
