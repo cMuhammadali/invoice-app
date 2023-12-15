@@ -67,7 +67,7 @@ export default function FormAdd() {
                         name="clientPaymentTerms"
                         placeholder="Net day"
                         className="font-bold font-spartan w-full"
-                        style={{ height: "41px" }}
+                        style={{ height: "40px" }}
                       >
                         <Select.Option value="Net 1 day">
                           Net 1 day
