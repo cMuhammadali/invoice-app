@@ -1,4 +1,5 @@
 export { default as NotFoundList } from "./NotFoundList/NotFoundList";
+export { default as LoaderSecond } from './Loader/LoaderSecond';
 export { default as ErrorForm } from "./ErrorForm/ErrorForm";
 export { default as ModalDelete } from "./Modal/ModalDelete";
 export { default as ModalError } from "./Modal/ModalError";

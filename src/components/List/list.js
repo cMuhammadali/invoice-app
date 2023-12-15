@@ -1,6 +1,7 @@
 import { fetchInvoices } from "../../services/InvoiceSlice/InvoiceSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { LoaderSecond } from '../index';
 import { useEffect } from "react";
 import "./List.css";
 
@@ -14,8 +15,11 @@ export default function List() {
 
   return (
     <div className="w-full h-96 mt-14">
+      <div className="text-center font-spartan text-xl">
+       {error}
+      </div>
       {isLoading ? (
-        <h2>Loading...</h2>
+        <LoaderSecond />
       ) : (
         invoices?.map((item) => {
           return (

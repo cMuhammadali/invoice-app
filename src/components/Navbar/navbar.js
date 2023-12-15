@@ -2,6 +2,7 @@ import { fetchInvoices } from "../../services/InvoiceSlice/InvoiceSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Button } from '../index';
 import "./Navbar.css";
 
 export default function Navbar() {
@@ -34,7 +35,7 @@ export default function Navbar() {
                 style={{ cursor: "pointer" }}
                 onClick={() => setIsFilterOpen(!isFilterOpen)}
               >
-                <span className="font-spartan font-bold">Filter by status</span>
+                <span className="font-spartan">Filter by status</span>
                 {isFilterOpen ? (
                   <img
                     src="/src/assets/icons/UpPath.svg"
@@ -55,18 +56,15 @@ export default function Navbar() {
               {isFilterOpen && (
                 <div className="p-3 shadow-xl w-40 absolute rounded-md z-50 select-box">
                   <ul>
-                    <li
-                      style={{ cursor: "pointer" }}
-                      className="font-spartan text-sm font-bold mt-2"
-                    >
+                    <li className="font-spartan text-sm mt-2 cursor-pointer">
                       <input type="checkbox" />{" "}
                       <span className="ml-3">All</span>
                     </li>
-                    <li className="font-spartan text-sm font-bold mt-2">
+                    <li className="font-spartan text-sm mt-2">
                       <input type="checkbox" />{" "}
                       <span className="ml-3">Pending</span>
                     </li>
-                    <li className="font-spartan text-sm font-bold mt-2">
+                    <li className="font-spartan text-sm mt-2">
                       <input type="checkbox" />{" "}
                       <span className="ml-3">Paid</span>
                     </li>
@@ -75,14 +73,14 @@ export default function Navbar() {
               )}
             </div>
             <Link to={"/new-invoice"}>
-              <button className="font-bold create-button text-white rounded-full px-3 flex items-center py-2 pr-4">
+              <Button className="create-button text-white rounded-full px-3 flex items-center py-2 pr-4">
                 <img
                   src="/src/assets/icons/+.svg"
                   alt="plus"
                   className="p-3 bg-white rounded-full"
                 />{" "}
                 <span className="ml-5 text-white">New Invoice</span>
-              </button>
+              </Button>
             </Link>
           </div>
         </div>
