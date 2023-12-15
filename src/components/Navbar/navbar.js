@@ -1,16 +1,24 @@
+import { fetchInvoices } from "../../services/InvoiceSlice/InvoiceSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import "./Navbar.css";
 
 export default function Navbar() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const dispatch = useDispatch();
+  const { invoices } = useSelector((state) => state.invoice);
+
+  useEffect(() => {
+    dispatch(fetchInvoices());
+  }, [dispatch]);
 
   return (
     <div className="w-full flex">
       <div className="flex-auto text-left">
         <h1 className="font-spartan text-4xl font-bold">Invoices</h1>
-        <p className="text-ink"> 
-          There are 6 total invoices
+        <p className="text-ink">
+          There are {invoices ? invoices.length : 0} total invoices
         </p>
       </div>
 
