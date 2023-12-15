@@ -1,10 +1,9 @@
 import { validationSchemaAddInvoice } from "../../validations/Index";
 import { FormItem, InputComponent } from "../../components/index";
-import { ErrorForm } from "../../components/index";
-import { LabelForm } from "../../components/index";
-import { DatePicker, Select } from "formik-antd";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
+import { Select } from "formik-antd";
+import { DatePicker } from 'antd';
 import "./Form.css";
 
 export default function FormAdd() {
@@ -17,7 +16,7 @@ export default function FormAdd() {
   return (
     <div
       className="w-full h-3/6 bg-white rounded-md"
-      style={{ paddingBottom: "32px", paddingTop: "32px" }}
+      style={{ paddingBottom: "32px", paddingTop: "28px" }}
     >
       <div className="px-8">
         <h1 className="font-bold font-spartan text-3xl">New Invoice</h1>
@@ -37,14 +36,14 @@ export default function FormAdd() {
         >
           {() => (
             <Form layout="vertical">
-              <FormItem label="Client's Name" name="clientName" type="text">
+              <FormItem label="Client's Name" name="clientName">
                 <InputComponent
                   name="clientName"
                   placeholder="John"
                   className="font-bold font-spartan py-2 mt-1"
                 />
               </FormItem>
-              <FormItem label="Client's Email" name="clientEmail" type="text">
+              <FormItem label="Client's Email" name="clientEmail">
                 <InputComponent
                   placeholder="user@gmail.com"
                   name="clientEmail"
@@ -52,36 +51,40 @@ export default function FormAdd() {
                 />
               </FormItem>
               <div className="flex justify-between">
-                <FormItem label="Due Date" name="clientDueDate">
-                  <div className="flex-auto relative">
+                <div className="flex-auto mr-2 w-2/4">
+                  <FormItem label="Due Date" name="clientDueDate">
                     <DatePicker
-                      placeholder="1 Apr 2004"
                       name="clientDueDate"
-                      className="font-bold font-spartan py-2 w-11/12"
+                      placeholder="1 Apr 2004"
+                      className="font-bold font-spartan py-2 w-full"
                     />
-                  </div>
-                </FormItem>
-                <FormItem label="Payment Terms" name="clientPaymentTerms">
+                  </FormItem>
+                </div>
+                <div className="flex-auto h-10 ml-2 w-2/4">
                   <div className="flex-auto relative">
-                    <Select
-                      name="clientPaymentTerms"
-                      placeholder="Net day"
-                      className="font-bold font-spartan w-full"
-                      style={{ height: "41px" }}
-                    >
-                      <Select.Option value="Net 1 day">Net 1 day</Select.Option>
-                      <Select.Option value="Net 7 days">
-                        Net 7 days
-                      </Select.Option>
-                      <Select.Option value="Net 14 days">
-                        Net 14 days
-                      </Select.Option>
-                      <Select.Option value="Net 30 days">
-                        Net 30 days
-                      </Select.Option>
-                    </Select>
+                    <FormItem label="Payment Terms" name="clientPaymentTerms">
+                      <Select
+                        name="clientPaymentTerms"
+                        placeholder="Net day"
+                        className="font-bold font-spartan w-full"
+                        style={{ height: "41px" }}
+                      >
+                        <Select.Option value="Net 1 day">
+                          Net 1 day
+                        </Select.Option>
+                        <Select.Option value="Net 7 days">
+                          Net 7 days
+                        </Select.Option>
+                        <Select.Option value="Net 14 days">
+                          Net 14 days
+                        </Select.Option>
+                        <Select.Option value="Net 30 days">
+                          Net 30 days
+                        </Select.Option>
+                      </Select>
+                    </FormItem>
                   </div>
-                </FormItem>
+                </div>
               </div>
               <FormItem
                 label="Project Description"
@@ -94,7 +97,7 @@ export default function FormAdd() {
                   className="font-bold font-spartan py-2"
                 />
               </FormItem>
-              <FormItem label="Price" name="price" type="number">
+              <FormItem label="Price" name="price">
                 <InputComponent
                   placeholder="Price"
                   name="price"

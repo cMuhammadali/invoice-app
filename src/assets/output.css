@@ -540,6 +540,10 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
 }
@@ -572,8 +576,16 @@ video {
   top: 70px;
 }
 
+.bottom-1 {
+  bottom: 0.25rem;
+}
+
 .z-50 {
   z-index: 50;
+}
+
+.m-2 {
+  margin: 0.5rem;
 }
 
 .ml-2 {
@@ -652,6 +664,10 @@ video {
   margin-top: 0.75rem;
 }
 
+.mt-7 {
+  margin-top: 1.75rem;
+}
+
 .flex {
   display: flex;
 }
@@ -704,6 +720,10 @@ video {
   height: 100vh;
 }
 
+.h-10 {
+  height: 2.5rem;
+}
+
 .w-1\/12 {
   width: 8.333333%;
 }
@@ -726,6 +746,26 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-11 {
+  width: 2.75rem;
+}
+
+.w-2\/4 {
+  width: 50%;
+}
+
+.w-1 {
+  width: 0.25rem;
+}
+
+.w-2\/12 {
+  width: 16.666667%;
+}
+
+.w-2 {
+  width: 0.5rem;
 }
 
 .flex-auto {
