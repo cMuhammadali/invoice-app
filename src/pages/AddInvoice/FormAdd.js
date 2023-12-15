@@ -15,7 +15,7 @@ export default function FormAdd() {
   return (
     <div
       className="w-full h-3/6 bg-white rounded-md"
-      style={{ paddingBottom: "32px", paddingTop: "28px" }}
+      style={{ paddingBottom: "32px", paddingTop: "26px" }}
     >
       <div className="px-8">
         <h1 className="font-bold font-spartan text-3xl">New Invoice</h1>
@@ -24,7 +24,7 @@ export default function FormAdd() {
             clientEmail: "",
             clientName: "",
             clientDueDate: null,
-            clientPaymentTerms: "",
+            clientPaymentTerms: null,
             clientDesc: "",
             price: null,
           }}
@@ -39,14 +39,14 @@ export default function FormAdd() {
                 <Input
                   name="clientName"
                   placeholder="John"
-                  className="font-bold font-spartan py-2 mt-1"
+                  className="font-bold font-spartan py-2 mt-1 text-base"
                 />
               </FormItem>
               <FormItem label="Client's Email" name="clientEmail">
                 <Input
                   placeholder="user@gmail.com"
                   name="clientEmail"
-                  className="font-bold font-spartan py-2"
+                  className="font-bold font-spartan py-2 text-base"
                 />
               </FormItem>
               <div className="flex justify-between">
@@ -55,7 +55,7 @@ export default function FormAdd() {
                     <DatePicker
                       name="clientDueDate"
                       placeholder="1 Apr 2004"
-                      className="font-bold font-spartan py-2 w-full"
+                      className="font-bold font-spartan py-2 w-full text-base"
                     />
                   </FormItem>
                 </div>
@@ -68,16 +68,16 @@ export default function FormAdd() {
                         className="font-bold font-spartan w-full"
                         style={{ height: "40px" }}
                       >
-                        <Select.Option value="Net 1 day">
+                        <Select.Option value={1}>
                           Net 1 day
                         </Select.Option>
-                        <Select.Option value="Net 7 days">
+                        <Select.Option value={7}>
                           Net 7 days
                         </Select.Option>
-                        <Select.Option value="Net 14 days">
+                        <Select.Option value={14}>
                           Net 14 days
                         </Select.Option>
-                        <Select.Option value="Net 30 days">
+                        <Select.Option value={30}>
                           Net 30 days
                         </Select.Option>
                       </Select>
@@ -93,26 +93,26 @@ export default function FormAdd() {
                 <Input
                   placeholder="Description"
                   name="clientDesc"
-                  className="font-bold font-spartan py-2"
+                  className="font-bold font-spartan py-2 text-base"
                 />
               </FormItem>
               <FormItem label="Price" name="price">
                 <Input
                   placeholder="Price"
                   name="price"
-                  className="font-bold font-spartan py-2"
+                  className="font-bold font-spartan py-2 text-base"
                 />
               </FormItem>
               <div className="flex justify-between mt-8">
                 <Button
-                  className="px-8 py-4 justify-start rounded-full font-spartan font-bold discard-button"
+                  className="px-8 py-4 justify-start rounded-full font-spartan discard-button text-base"
                   onClick={goBack}
                 >
                   Discard
                 </Button>
                 <Button
                   type="submit"
-                  className="px-8 py-4 rounded-full text-white font-spartan font-bold login-button"
+                  className="px-8 py-4 rounded-full text-white font-spartan login-button text-base"
                 >
                   Save & Submit
                 </Button>

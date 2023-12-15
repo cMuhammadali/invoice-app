@@ -2,7 +2,7 @@ import { validateSchemaEditInvoice } from "../../validations/Index";
 import { Button, FormItem, Input } from "../../components/index";
 import { useNavigate } from "react-router-dom";
 import { Select, DatePicker } from "antd";
-import { Form } from "formik-antd";
+import { Form, } from "formik-antd";
 import { Formik } from "formik";
 
 export default function EditForm() {
@@ -70,16 +70,16 @@ export default function EditForm() {
                         className="font-bold font-spartan w-full"
                         style={{ height: "40px" }}
                       >
-                        <Select.Option value="Net 1 day">
+                        <Select.Option value={1}>
                           Net 1 day
                         </Select.Option>
-                        <Select.Option value="Net 7 days">
+                        <Select.Option value={7}>
                           Net 7 days
                         </Select.Option>
-                        <Select.Option value="Net 14 days">
+                        <Select.Option value={14}>
                           Net 14 days
                         </Select.Option>
-                        <Select.Option value="Net 30 days">
+                        <Select.Option value={30}>
                           Net 30 days
                         </Select.Option>
                       </Select>

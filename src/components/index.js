@@ -1,5 +1,4 @@
 export { default as NotFoundList } from "./NotFoundList/NotFoundList";
-export { default as LabelForm } from "./LabelComponent/LabelForm";
 export { default as ErrorForm } from "./ErrorForm/ErrorForm";
 export { default as ModalDelete } from "./Modal/ModalDelete";
 export { default as ModalError } from "./Modal/ModalError";
