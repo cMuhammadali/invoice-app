@@ -1,4 +1,4 @@
-import { FormItem, Input, Loader } from "../../components/index";
+import { Button, FormItem, Input, Loader } from "../../components/index";
 import { validationSchemaLogin } from "../../validations/Index";
 import { loginUser } from "../../services/AuthSlice/AuthSlice";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -88,12 +88,12 @@ function Login() {
                   </FormItem>
                 </div>
                 <div className="flex justify-end mt-8">
-                  <button
+                  <Button
                     type="submit"
                     className="px-8 py-4 rounded-full text-white font-spartan text-lg login-button"
                   >
                     {isLoading ? <Loader /> : "Login"}
-                  </button>
+                  </Button>
                 </div>
               </Form>
             )}

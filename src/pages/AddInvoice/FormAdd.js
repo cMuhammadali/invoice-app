@@ -1,7 +1,7 @@
 import { validationSchemaAddInvoice } from "../../validations/Index";
-import { FormItem, Input } from "../../components/index";
+import { Button, FormItem, Input } from "../../components/index";
 import { useNavigate } from "react-router-dom";
-import { DatePicker, Select } from 'antd';
+import { DatePicker, Select } from "antd";
 import { Formik, Form } from "formik";
 import "./Form.css";
 
@@ -104,18 +104,18 @@ export default function FormAdd() {
                 />
               </FormItem>
               <div className="flex justify-between mt-8">
-                <button
+                <Button
                   className="px-8 py-4 justify-start rounded-full font-spartan font-bold discard-button"
                   onClick={goBack}
                 >
                   Discard
-                </button>
-                <button
+                </Button>
+                <Button
                   type="submit"
                   className="px-8 py-4 rounded-full text-white font-spartan font-bold login-button"
                 >
                   Save & Submit
-                </button>
+                </Button>
               </div>
             </Form>
           )}

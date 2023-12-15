@@ -1,7 +1,7 @@
 import { validateSchemaEditInvoice } from "../../validations/Index";
-import { FormItem, Input } from "../../components/index";
+import { Button, FormItem, Input } from "../../components/index";
 import { useNavigate } from "react-router-dom";
-import { Select, DatePicker } from 'antd';
+import { Select, DatePicker } from "antd";
 import { Form } from "formik-antd";
 import { Formik } from "formik";
 
@@ -106,18 +106,18 @@ export default function EditForm() {
                 />
               </FormItem>
               <div className="flex justify-end mt-5">
-                <button
+                <Button
                   className="px-8 py-4 mr-4 rounded-full font-spartan text-base discard-button"
                   onClick={goBack}
                 >
                   Cancel
-                </button>
-                <button
+                </Button>
+                <Button
                   type="submit"
                   className="px-8 py-4 rounded-full text-white font-spartan text-base login-button"
                 >
                   Save Changes
-                </button>
+                </Button>
               </div>
             </Form>
           )}
