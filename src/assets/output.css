@@ -560,16 +560,8 @@ video {
   left: 0px;
 }
 
-.left-8 {
-  left: 2rem;
-}
-
 .top-12 {
   top: 3rem;
-}
-
-.top-4 {
-  top: 1rem;
 }
 
 .top-8 {
@@ -654,6 +646,10 @@ video {
 
 .mt-8 {
   margin-top: 2rem;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
 }
 
 .flex {
