@@ -28,7 +28,7 @@ export default function List() {
                 <span className="font-bold">{item.userId}</span>
               </span>
               <span className="flex-auto font-spartan text-listText">
-                {item.createdDate}
+                {item.createdDate.slice(0, 10)}
               </span>
               <span className="flex-auto font-spartan text-listText">
                 {item.to}
@@ -51,7 +51,7 @@ export default function List() {
                   </>
                 )}
               </span>
-              <Link to={"/invoice-page/XM9141"} className="p-4">
+              <Link to={`/invoice-page/${item.id}`} className="p-4">
                 <img
                   style={{ cursor: "pointer" }}
                   className="h-4 font-spartan"

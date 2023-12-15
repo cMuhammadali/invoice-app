@@ -7,6 +7,7 @@ import "./Form.css";
 
 export default function FormAdd() {
   const navigate = useNavigate();
+  const dateFormat = "DD.MM.YYYY";
 
   function goBack() {
     navigate(-1);
@@ -54,8 +55,9 @@ export default function FormAdd() {
                   <FormItem label="Due Date" name="clientDueDate">
                     <DatePicker
                       name="clientDueDate"
-                      placeholder="1 Apr 2004"
+                      placeholder="15 Dec 2023"
                       className="font-bold font-spartan py-2 w-full text-base"
+                      format={dateFormat}
                     />
                   </FormItem>
                 </div>
@@ -65,21 +67,12 @@ export default function FormAdd() {
                       <Select
                         name="clientPaymentTerms"
                         placeholder="Net day"
-                        className="font-bold font-spartan w-full"
-                        style={{ height: "40px" }}
+                        className="font-bold font-spartan w-full h-10"
                       >
-                        <Select.Option value={1}>
-                          Net 1 day
-                        </Select.Option>
-                        <Select.Option value={7}>
-                          Net 7 days
-                        </Select.Option>
-                        <Select.Option value={14}>
-                          Net 14 days
-                        </Select.Option>
-                        <Select.Option value={30}>
-                          Net 30 days
-                        </Select.Option>
+                        <Select.Option value={1}>Net 1 day</Select.Option>
+                        <Select.Option value={7}>Net 7 days</Select.Option>
+                        <Select.Option value={14}>Net 14 days</Select.Option>
+                        <Select.Option value={30}>Net 30 days</Select.Option>
                       </Select>
                     </FormItem>
                   </div>
@@ -96,7 +89,7 @@ export default function FormAdd() {
                   className="font-bold font-spartan py-2 text-base"
                 />
               </FormItem>
-              <FormItem label="Price" name="price">
+              <FormItem label="Price" name="price" type="number">
                 <Input
                   placeholder="Price"
                   name="price"

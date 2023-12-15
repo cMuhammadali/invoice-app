@@ -1,12 +1,21 @@
-import { useNavigate } from "react-router-dom";
+import { fetchOneInvoices } from "../../services/InvoiceSlice/InvoiceSlice";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import OneInvoice from "./OneInvoice";
+import { useEffect } from "react";
 
 export default function InvoicePage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { id } = useParams(); 
 
   function goBack() {
     navigate(-1);
   }
+
+  useEffect(() => {
+    dispatch(fetchOneInvoices(id));
+  }, [dispatch]);
 
   return (
     <div>
@@ -20,7 +29,7 @@ export default function InvoicePage() {
       </div>
 
       <div className="mt-4">
-        <OneInvoice />
+        <OneInvoice id={id} />
       </div>
     </div>
   );

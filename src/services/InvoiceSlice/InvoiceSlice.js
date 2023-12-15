@@ -1,4 +1,4 @@
-import { createInvoice, getInvoices } from "../InvoiceService/InvoiceService";
+import { createInvoice, getInvoices, getOneInvoices } from "../InvoiceService/InvoiceService";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchInvoices = createAsyncThunk(
@@ -6,6 +6,18 @@ export const fetchInvoices = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const data = await getInvoices();
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const fetchOneInvoices = createAsyncThunk(
+  "oneInvoice/get",
+  async (id, { rejectWithValue }) => {
+    try {
+      const data = await getOneInvoices(id);
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -31,6 +43,7 @@ const invoiceSlice = createSlice({
     invoices: [],
     error: null,
     isLoading: false,
+    oneInvoice: null,
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -39,7 +52,7 @@ const invoiceSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(createNewInvoice.fulfilled, (state, action) => {
-        state.invoice = action.payload;
+        state.invoices = action.payload;
         state.isLoading = false;
         state.error = null;
       })
@@ -56,6 +69,18 @@ const invoiceSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchInvoices.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(fetchOneInvoices.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchOneInvoices.fulfilled, (state, action) => {
+        state.oneInvoice = action.payload;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(fetchOneInvoices.rejected, (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
       });

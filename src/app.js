@@ -13,11 +13,11 @@ export default function App() {
     <Routes>
       <Route path="/login" element={<Login />} />
 
-      <Route path="/" element={<Main />}>
+      <Route path="/" element={<Main />}> 
         <Route index element={<Home />} />
         <Route path="/new-invoice" element={<AddInvoice />} />
-        <Route path="/invoice-page/XM9141" element={<InvoicePage />} />
-        <Route path="/edit-invoice/XM9141" element={<EditInvoice />} />
+        <Route path="/invoice-page/:id" element={<InvoicePage />} />
+        <Route path="/edit-invoice/:id" element={<EditInvoice />} />
       </Route>
     </Routes>
   );
