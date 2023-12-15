@@ -1,9 +1,8 @@
 import { validationSchemaAddInvoice } from "../../validations/Index";
-import { FormItem, InputComponent } from "../../components/index";
+import { FormItem, Input } from "../../components/index";
 import { useNavigate } from "react-router-dom";
+import { DatePicker, Select } from 'antd';
 import { Formik, Form } from "formik";
-import { Select } from "formik-antd";
-import { DatePicker } from 'antd';
 import "./Form.css";
 
 export default function FormAdd() {
@@ -37,14 +36,14 @@ export default function FormAdd() {
           {() => (
             <Form layout="vertical">
               <FormItem label="Client's Name" name="clientName">
-                <InputComponent
+                <Input
                   name="clientName"
                   placeholder="John"
                   className="font-bold font-spartan py-2 mt-1"
                 />
               </FormItem>
               <FormItem label="Client's Email" name="clientEmail">
-                <InputComponent
+                <Input
                   placeholder="user@gmail.com"
                   name="clientEmail"
                   className="font-bold font-spartan py-2"
@@ -91,14 +90,14 @@ export default function FormAdd() {
                 name="clientDesc"
                 type="text"
               >
-                <InputComponent
+                <Input
                   placeholder="Description"
                   name="clientDesc"
                   className="font-bold font-spartan py-2"
                 />
               </FormItem>
               <FormItem label="Price" name="price">
-                <InputComponent
+                <Input
                   placeholder="Price"
                   name="price"
                   className="font-bold font-spartan py-2"

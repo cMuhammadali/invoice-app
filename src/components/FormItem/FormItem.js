@@ -2,7 +2,7 @@ import { useField } from "formik";
 import React from "react";
 
 function FormItem({ label, children, ...props }) {
-  const [field, meta, helpers] = useField(props);
+  const [field, meta] = useField(props);
 
   return (
     <div className="relative">

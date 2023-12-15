@@ -1,4 +1,3 @@
-export { default as InputComponent } from "./InputComponent/InputForm";
 export { default as NotFoundList } from "./NotFoundList/NotFoundList";
 export { default as LabelForm } from "./LabelComponent/LabelForm";
 export { default as ErrorForm } from "./ErrorForm/ErrorForm";
@@ -10,5 +9,6 @@ export { default as Sidebar } from "./Sidebar/Sidebar";
 export { default as Loader } from './Loader/Loader';
 export { default as Navbar } from "./Navbar/Navbar";
 export { default as Layout } from "./Layout/Layout";
+export { default as Input } from "./Input/Input";
 export { default as List } from "./List/List";
 export { default as Main } from "./Main/Main";

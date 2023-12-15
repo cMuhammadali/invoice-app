@@ -1,5 +1,5 @@
 import { Input } from "antd";
 
-export default function InputComponent({ ...props }) {
+export default function InputForm({ ...props }) {
   return <Input {...props} />;
 }
