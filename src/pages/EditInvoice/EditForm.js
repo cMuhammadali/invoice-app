@@ -1,6 +1,6 @@
+import { Button, FormItem, Input, LoaderSecond } from "../../components/index";
 import { fetchInvoices } from "../../services/InvoiceSlice/InvoiceSlice";
 import { validateSchemaEditInvoice } from "../../validations/Index";
-import { Button, FormItem, Input } from "../../components/index";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Select, DatePicker } from "antd";
@@ -23,7 +23,7 @@ export default function EditForm() {
 
   console.log(oneInvoice);
   return (
-    <div className="w-full h-3/6 bg-white pt-5 mb-8">
+    <div className="w-full h-3/6 bg-white pt-5 pb-6">
       {oneInvoice ? (
         <div className="px-8">
           <h1 className="font-bold font-spartan text-3xl">
@@ -125,7 +125,7 @@ export default function EditForm() {
           </Formik>
         </div>
       ) : (
-        "Loading..."
+        <LoaderSecond />
       )}
     </div>
   );

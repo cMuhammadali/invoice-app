@@ -5,19 +5,34 @@ import { DatePicker, Select } from "antd";
 import { Formik, Form } from "formik";
 import "./Form.css";
 
+const options = [
+  {
+    value: 1,
+    label: "Net 1 day",
+  },
+  {
+    value: 7,
+    label: "Net 7 day",
+  },
+  {
+    value: 14,
+    label: "Net 14 day",
+  },
+  {
+    value: 30,
+    label: "Net 30 day",
+  },
+];
+
 export default function FormAdd() {
   const navigate = useNavigate();
-  const dateFormat = "DD.MM.YYYY";
 
   function goBack() {
     navigate(-1);
   }
 
   return (
-    <div
-      className="w-full h-3/6 bg-white rounded-md"
-      style={{ paddingBottom: "32px", paddingTop: "26px" }}
-    >
+    <div className="w-full h-3/6 bg-white rounded-md pb-8 pt-6">
       <div className="px-8">
         <h1 className="font-bold font-spartan text-3xl">New Invoice</h1>
         <Formik
@@ -25,7 +40,9 @@ export default function FormAdd() {
             clientEmail: "",
             clientName: "",
             clientDueDate: null,
-            clientPaymentTerms: null,
+            clientDueDate2: "2023-12-15",
+            clientPaymentTerms: 7,
+            clientPaymentTerms2: 7,
             clientDesc: "",
             price: null,
           }}
@@ -56,8 +73,7 @@ export default function FormAdd() {
                     <DatePicker
                       name="clientDueDate"
                       placeholder="15 Dec 2023"
-                      className="font-bold font-spartan py-2 w-full text-base"
-                      format={dateFormat}
+                      className="font-bold font-spartan py-2 w-full text-base border-1 border-ink"
                     />
                   </FormItem>
                 </div>
@@ -67,13 +83,9 @@ export default function FormAdd() {
                       <Select
                         name="clientPaymentTerms"
                         placeholder="Net day"
-                        className="font-bold font-spartan w-full h-10"
-                      >
-                        <Select.Option value={1}>Net 1 day</Select.Option>
-                        <Select.Option value={7}>Net 7 days</Select.Option>
-                        <Select.Option value={14}>Net 14 days</Select.Option>
-                        <Select.Option value={30}>Net 30 days</Select.Option>
-                      </Select>
+                        className="font-bold font-spartan w-full h-10 border-1 border-ink"
+                        options={options}
+                      />
                     </FormItem>
                   </div>
                 </div>

@@ -1,7 +1,7 @@
 import { fetchInvoices } from "../../services/InvoiceSlice/InvoiceSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { LoaderSecond } from '../index';
+import { LoaderSecond } from "../index";
 import { useEffect } from "react";
 import "./List.css";
 
@@ -15,9 +15,7 @@ export default function List() {
 
   return (
     <div className="w-full h-96 mt-14">
-      <div className="text-center font-spartan text-xl">
-       {error}
-      </div>
+      <div className="text-center font-spartan text-xl">{error}</div>
       {isLoading ? (
         <LoaderSecond />
       ) : (
@@ -40,21 +38,23 @@ export default function List() {
               <span className="flex-auto font-spartan font-bold">
                 £ {item.price}
               </span>
-              <span className="flex-auto font-spartan p-2 rounded-md bg-whiteGreen items-center relative">
-                {item.paid ? (
-                  <>
+              {item.paid ? (
+                <>
+                  <span className="flex-auto font-spartan p-2 rounded-md bg-whiteGreen items-center relative">
                     <span className="dot-green bg-greenPaid rounded-full"></span>
                     <span className="ml-2 font-bold text-greenPaid">Paid</span>
-                  </>
-                ) : (
-                  <>
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="flex-auto font-spartan p-2 rounded-md bg-whiteOrange items-center relative">
                     <span className="dot-orange bg-orangePending rounded-full"></span>
                     <span className="ml-2 font-bold text-orangePending">
                       Pending
                     </span>
-                  </>
-                )}
-              </span>
+                  </span>
+                </>
+              )}
               <Link to={`/invoice-page/${item.id}`} className="p-4">
                 <img
                   style={{ cursor: "pointer" }}

@@ -10,7 +10,7 @@ export default function OneInvoice({ id }) {
   const dispatch = useDispatch();
   const oneInvoice = useSelector((state) => state.invoice.oneInvoice);
 
-  const [isPaid, setIsPaid] = useState(false);
+  const [isPaid, setIsPaid] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -73,7 +73,7 @@ export default function OneInvoice({ id }) {
                   id={id}
                   body={`Are you sure you want to delete invoice ${oneInvoice.to}? This action cannot be undone.`}
                 />
-                {isPaid ? null : (
+                {oneInvoice.paid ? null : (
                   <Button
                     className="paid-button px-7 py-4 rounded-full font-spartan text-white"
                     onClick={() => setIsPaid(!isPaid)}
@@ -84,7 +84,7 @@ export default function OneInvoice({ id }) {
               </div>
             </div>
           </div>
-          
+
           <div className="mt-4">
             <InvoiceCenter oneInvoice={oneInvoice} />
           </div>
