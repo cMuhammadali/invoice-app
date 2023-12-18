@@ -26,3 +26,12 @@ export const createInvoice = async (invoiceData) => {
     throw error;
   }
 };
+
+export const deleteInvoice = async (id) => {
+  try {
+    const response = await axiosInstance.delete(`/invoices${id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

@@ -1,5 +1,5 @@
+import { Button, LoaderSecond, ModalDelete } from "../../components/index";
 import { fetchInvoices } from "../../services/InvoiceSlice/InvoiceSlice";
-import { Button, ModalDelete } from "../../components/index";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import InvoiceCenter from "./InvoiceCenter";
@@ -90,7 +90,7 @@ export default function OneInvoice({ id }) {
           </div>
         </>
       ) : (
-        "Loading..."
+        <LoaderSecond />
       )}
     </div>
   );

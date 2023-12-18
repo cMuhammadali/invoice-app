@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import "./List.css";
 
 export default function List() {
+  const token = localStorage.getItem("token");
   const dispatch = useDispatch();
   const { invoices, isLoading, error } = useSelector((state) => state.invoice);
 
@@ -55,14 +56,25 @@ export default function List() {
                   </span>
                 </>
               )}
-              <Link to={`/invoice-page/${item.id}`} className="p-4">
-                <img
-                  style={{ cursor: "pointer" }}
-                  className="h-4 font-spartan"
-                  src="/src/assets/icons/Path 5.svg"
-                  alt="path"
-                />
-              </Link>
+              {token ? (
+                <Link to={`/invoice-page/${item.id}`} className="p-4">
+                  <img
+                    style={{ cursor: "pointer" }}
+                    className="h-4 font-spartan"
+                    src="/src/assets/icons/Path 5.svg"
+                    alt="path"
+                  />
+                </Link>
+              ) : (
+                <Link to={"/login"} className="p-4">
+                  <img
+                    style={{ cursor: "pointer" }}
+                    className="h-4 font-spartan"
+                    src="/src/assets/icons/Path 5.svg"
+                    alt="path"
+                  />
+                </Link>
+              )}
             </div>
           );
         })

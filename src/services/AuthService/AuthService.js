@@ -6,7 +6,7 @@ export const login = async (email, password) => {
       email,
       password,
     });
-    console.log('login =>', response);
+    localStorage.setItem("id", response.data.user.id);
     return response.data;
   } catch (error) {
     throw error;

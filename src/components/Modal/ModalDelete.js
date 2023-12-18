@@ -1,7 +1,17 @@
-import { Button } from "../../components/index";
+import { deleteInvoiceThunk } from "../../services/InvoiceSlice/InvoiceSlice";
+import { Button, Loader } from "../../components/index";
+import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "antd";
 
 export default function ModalDelete({ isOpen, setIsOpen, title, id, body }) {
+  const dispatch = useDispatch();
+  const { isLoading } = useSelector((state) => state.invoice);
+
+  const handleDelete = () => {
+    dispatch(deleteInvoiceThunk(id));
+  };
+
+  console.log(isLoading);
   return (
     <Modal
       title={title}
@@ -18,8 +28,11 @@ export default function ModalDelete({ isOpen, setIsOpen, title, id, body }) {
         >
           Cancel
         </Button>
-        <Button className="delete-button px-7 py-4 rounded-full font-spartan text-base text-white mr-3">
-          Delete
+        <Button
+          className="delete-button px-7 py-4 rounded-full font-spartan text-base text-white mr-3"
+          onClick={handleDelete}
+        >
+          {isLoading ? <Loader /> : "Delete"}
         </Button>
       </div>
     </Modal>
