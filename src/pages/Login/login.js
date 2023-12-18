@@ -1,10 +1,10 @@
 import { Button, FormItem, Input, Loader } from "../../components/index";
 import { validationSchemaLogin } from "../../validations/Index";
 import { loginUser } from "../../services/AuthSlice/AuthSlice";
-import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ModalError } from "../../components/index";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
 import "../../assets/output.css";
 import "./Login.css";
@@ -12,12 +12,9 @@ import "./Login.css";
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
   const { error, isLoading } = useSelector((state) => state.auth);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [loginAttempt, setLoginAttempt] = useState(0);
-
-  const { from } = location.state || { from: { pathname: "/" } };
 
   const handleLogin = async (values) => {
     setLoginAttempt((prev) => prev + 1);
@@ -25,7 +22,7 @@ function Login() {
       loginUser({ email: values.email, password: values.password })
     );
     if (result.type === "auth/login/fulfilled") {
-      navigate(from, { replace: true });
+      navigate(-1);
     }
   };
 

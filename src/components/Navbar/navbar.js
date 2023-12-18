@@ -2,16 +2,18 @@ import { fetchInvoices } from "../../services/InvoiceSlice/InvoiceSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from '../index';
+import { Button } from "../index";
 import "./Navbar.css";
 
 export default function Navbar() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [token, setToken] = useState(null);
   const dispatch = useDispatch();
   const { invoices } = useSelector((state) => state.invoice);
 
   useEffect(() => {
     dispatch(fetchInvoices());
+    setToken(localStorage.getItem("token"))
   }, [dispatch]);
 
   return (
@@ -72,16 +74,29 @@ export default function Navbar() {
                 </div>
               )}
             </div>
-            <Link to={"/new-invoice"}>
-              <Button className="create-button text-white rounded-full px-3 flex items-center py-2 pr-4">
-                <img
-                  src="/src/assets/icons/+.svg"
-                  alt="plus"
-                  className="p-3 bg-white rounded-full"
-                />{" "}
-                <span className="ml-5 text-white">New Invoice</span>
-              </Button>
-            </Link>
+            {token ? (
+              <Link to={"/new-invoice"}>
+                <Button className="create-button text-white rounded-full px-3 flex items-center py-2 pr-4">
+                  <img
+                    src="/src/assets/icons/+.svg"
+                    alt="plus"
+                    className="p-3 bg-white rounded-full"
+                  />{" "}
+                  <span className="ml-5 text-white">New Invoice</span>
+                </Button>
+              </Link>
+            ) : (
+              <Link to={"/login"}>
+                <Button className="create-button text-white rounded-full px-3 flex items-center py-2 pr-4">
+                  <img
+                    src="/src/assets/icons/+.svg"
+                    alt="plus"
+                    className="p-3 bg-white rounded-full"
+                  />{" "}
+                  <span className="ml-5 text-white">New Invoice</span>
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       </div>
