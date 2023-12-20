@@ -1,17 +1,23 @@
 import { createNewInvoice } from "../../services/InvoiceSlice/InvoiceSlice";
 import { validationSchemaAddInvoice } from "../../validations/Index";
-import { Button, FormItem, Input, ModalError } from "../../components/index";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { DatePicker, Select } from "antd";
 import { Formik, Form } from "formik";
+import {
+  Button,
+  FormItem,
+  Input,
+  LoaderSecond,
+  ModalError,
+} from "../../components/index";
 import dayjs from "dayjs";
 import "dayjs/locale/en";
 import "dayjs/locale/es";
 import "dayjs/locale/en";
 import "./Form.css";
-import { useEffect, useState } from "react";
 
 dayjs.extend(customParseFormat);
 dayjs.locale("en");
@@ -37,13 +43,13 @@ const options = [
 
 const dateFormat = "YYYY/MM/DD";
 const worker = {
-  clientDueDate: dayjs("2020-06-09T12:40:14+0000"),
+  clientDueDate: dayjs("2023-12-12T12:12:12+0000"),
 };
 
 export default function FormAdd() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { error } = useSelector((state) => state.invoice);
+  const { error, status, isLoading } = useSelector((state) => state.invoice);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [formAttempt, setFormAttempt] = useState(0);
@@ -55,6 +61,7 @@ export default function FormAdd() {
   const dateNow = new Date();
   const date = dateNow.toLocaleDateString();
 
+  console.log(status);
   const handleSubmit = (values) => {
     setFormAttempt((prev) => prev + 1);
     dispatch(
@@ -76,11 +83,21 @@ export default function FormAdd() {
     if (error) {
       setIsModalVisible(true);
     }
-  }, [error, formAttempt]);
+    if (status === 201) {
+      navigate("/");
+    }
+  }, [error, formAttempt, status]);
 
   return (
     <>
-      <ModalError open={isModalVisible} setIsModalVisible={setFormAttempt}>
+      <ModalError
+        open={isModalVisible}
+        onCancel={setIsModalVisible}
+        setIsModalVisible={setIsModalVisible}
+        footer={false}
+        title="Error"
+        buttonChildren={<Link to={"/login"}>Login</Link>}
+      >
         {error}
       </ModalError>
       <div className="w-full h-3/6 bg-white rounded-md pb-8 pt-6">
@@ -167,7 +184,7 @@ export default function FormAdd() {
                     type="submit"
                     className="px-8 py-4 rounded-full text-white font-spartan login-button text-base"
                   >
-                    Save & Submit
+                    {isLoading ? <LoaderSecond /> : "Save & Submit"}
                   </Button>
                 </div>
               </Form>

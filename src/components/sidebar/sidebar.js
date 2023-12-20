@@ -1,12 +1,16 @@
+import { Link } from "react-router-dom";
+
 export default function Sidebar() {
   return (
     <div className="h-screen text-white text-center rounded-r-[16px] relative bg-sidebarDark">
       <div className="h-24 rounded-tr-[16px] bg-inkHeader1"></div>
-      <img
-        src="/src/assets/icons/Combined Shape.svg"
-        alt="Logo"
-        className="w-full h-11 z-50 absolute top-12"
-      />
+      <Link to={'/'}>
+        <img
+          src="/src/assets/icons/Combined Shape.svg"
+          alt="Logo"
+          className="w-full h-11 z-50 absolute top-12 cursor-pointer"
+        />
+      </Link>
       <div className="w-full h-20 absolute rounded-br-[16px] rounded-tl-[16px] left-0 top-[70px] bg-inkHeader2"></div>
       <div className="w-full absolute bottom-24 h-28">
         <div className="flex items-center justify-center">

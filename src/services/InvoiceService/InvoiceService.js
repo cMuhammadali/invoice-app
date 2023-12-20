@@ -21,7 +21,8 @@ export const getOneInvoices = async (id) => {
 export const createInvoice = async (invoiceData) => {
   try {
     const response = await axiosInstance.post("/invoices", invoiceData);
-    return response.data;
+    console.log('response 1 =>', response);
+    return response;
   } catch (error) {
     throw error;
   }
@@ -29,7 +30,18 @@ export const createInvoice = async (invoiceData) => {
 
 export const deleteInvoice = async (id) => {
   try {
-    const response = await axiosInstance.delete(`/invoices${id}`);
+    const response = await axiosInstance.delete(`/invoices/${id}`);
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const patchInvoice = async (id, invoiceDate) => {
+  console.log("invoiceDate patch service =>", invoiceDate);
+  try {
+    const response = await axiosInstance.patch(`/invoices/${id}`);
+    console.log('response patch =>', response);
     return response.data;
   } catch (error) {
     throw error;

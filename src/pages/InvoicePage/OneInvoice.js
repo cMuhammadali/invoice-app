@@ -1,6 +1,9 @@
 import { Button, LoaderSecond, ModalDelete } from "../../components/index";
-import { fetchInvoices } from "../../services/InvoiceSlice/InvoiceSlice";
 import { useSelector, useDispatch } from "react-redux";
+import {
+  fetchInvoices,
+  patchInvoiceThunk,
+} from "../../services/InvoiceSlice/InvoiceSlice";
 import { useEffect, useState } from "react";
 import InvoiceCenter from "./InvoiceCenter";
 import { Link } from "react-router-dom";
@@ -17,7 +20,15 @@ export default function OneInvoice({ id }) {
     dispatch(fetchInvoices());
   }, [dispatch]);
 
-  console.log(oneInvoice);
+  const handlePatch = () => {
+    console.log("Clicked");
+    dispatch(
+      patchInvoiceThunk(id, {
+        paid: true,
+      })
+    );
+  };
+
   return (
     <div>
       {oneInvoice ? (
@@ -76,7 +87,7 @@ export default function OneInvoice({ id }) {
                 {oneInvoice.paid ? null : (
                   <Button
                     className="paid-button px-7 py-4 rounded-full font-spartan text-white"
-                    onClick={() => setIsPaid(!isPaid)}
+                    onClick={handlePatch}
                   >
                     Mark as Paid
                   </Button>

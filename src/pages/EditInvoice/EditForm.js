@@ -1,17 +1,33 @@
 import { Button, FormItem, Input, LoaderSecond } from "../../components/index";
-import { fetchInvoices } from "../../services/InvoiceSlice/InvoiceSlice";
 import { validateSchemaEditInvoice } from "../../validations/Index";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 import { useSelector, useDispatch } from "react-redux";
+import {
+  fetchInvoices,
+  patchInvoiceThunk,
+} from "../../services/InvoiceSlice/InvoiceSlice";
 import { useNavigate } from "react-router-dom";
 import { Select, DatePicker } from "antd";
 import { Form } from "formik-antd";
 import { useEffect } from "react";
 import { Formik } from "formik";
+import dayjs from "dayjs";
+import "dayjs/locale/en";
+import "dayjs/locale/es";
+import "dayjs/locale/en";
+
+dayjs.extend(customParseFormat);
+dayjs.locale("en");
 
 export default function EditForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const oneInvoice = useSelector((state) => state.invoice.oneInvoice);
+
+  const dateFormat = "YYYY/MM/DD";
+  const worker = {
+    clientDueDate: dayjs("2023-12-12T12:12:12+0000"),
+  };
 
   function goBack() {
     navigate(-1);
@@ -20,6 +36,10 @@ export default function EditForm() {
   useEffect(() => {
     dispatch(fetchInvoices());
   }, [dispatch]);
+
+  const handlePatch = (id) => {
+    dispatch(patchInvoiceThunk(id));
+  };
 
   console.log(oneInvoice);
   return (
@@ -34,8 +54,8 @@ export default function EditForm() {
             initialValues={{
               clientEmail: oneInvoice.email,
               clientName: oneInvoice.to,
-              clientDueDate: null,
-              clientPaymetTerms: "",
+              clientDueDate: worker.clientDueDate,
+              clientPaymentTerms: 7,
               clientDesc: oneInvoice.description || null,
               price: oneInvoice.price,
             }}
@@ -64,6 +84,7 @@ export default function EditForm() {
                   <div className="flex-auto mr-2 w-2/4">
                     <FormItem label="Due Date" name="clientDueDate">
                       <DatePicker
+                        format={dateFormat}
                         name="clientDueDate"
                         placeholder="1 Apr 2004"
                         className="font-bold font-spartan py-2 w-full"

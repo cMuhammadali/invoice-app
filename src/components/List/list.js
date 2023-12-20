@@ -14,21 +14,21 @@ export default function List() {
     dispatch(fetchInvoices());
   }, [dispatch]);
 
+  console.log(invoices);
   return (
-    <div className="w-full h-96 mt-14">
+    <div className="w-full h-96">
       <div className="text-center font-spartan text-xl">{error}</div>
       {isLoading ? (
         <LoaderSecond />
       ) : (
-        invoices?.map((item) => {
+        invoices?.map((item, index) => {
           return (
             <div
               className="p-6 rounded-md flex text-center items-center mt-6 mr-2 ml-2 shadow-box"
               key={item.id}
             >
               <span className="flex-auto font-spartan">
-                <span className="text-ink font-bold">#</span>
-                <span className="font-bold">{item.userId}</span>
+                <span className="text-ink font-bold">#{index + 1}</span>
               </span>
               <span className="flex-auto font-spartan text-listText">
                 {item.createdDate.slice(0, 10)}

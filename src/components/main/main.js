@@ -8,7 +8,7 @@ export default function Main() {
       <div className="w-1/12">
         <Sidebar />
       </div>
-      <div className="w-full h-screen pt-4 px-72 overflow-auto rounded-md bg-mainBg">
+      <div className="w-full h-screen pt-5 px-72 overflow-auto rounded-md bg-mainBg">
         <Outlet />
       </div>
     </div>

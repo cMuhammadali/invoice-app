@@ -3,6 +3,7 @@ import {
   getInvoices,
   getOneInvoices,
   deleteInvoice,
+  patchInvoice,
 } from "../InvoiceService/InvoiceService";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
@@ -35,7 +36,8 @@ export const createNewInvoice = createAsyncThunk(
   async (invoiceData, { rejectWithValue }) => {
     try {
       const response = await createInvoice(invoiceData);
-      return response;
+      console.log("response 2 =>", response);
+      return response.data;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -47,9 +49,22 @@ export const deleteInvoiceThunk = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const response = await deleteInvoice(id);
-      console.log(response);
       return response;
     } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const patchInvoiceThunk = createAsyncThunk(
+  "invoice/patch",
+  async (id, invoiceDate, { rejectWithValue }) => {
+    console.log('invoiceDate patch slice =>', invoiceDate);
+    try {
+      const response = patchInvoice(id);
+      return response;
+    } catch (error) {
+      console.log('error patch', error);
       return rejectWithValue(error);
     }
   }
@@ -59,6 +74,7 @@ const invoiceSlice = createSlice({
   name: "invoice",
   initialState: {
     invoices: [],
+    status: null,
     error: null,
     isLoading: false,
     oneInvoice: null,
@@ -70,12 +86,14 @@ const invoiceSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(createNewInvoice.fulfilled, (state, action) => {
-        state.invoices = action.payload;
+        console.log("payload =>", action.payload);
+        state.invoices = [...state.invoices, action.payload];
+        state.status = 201;
         state.isLoading = false;
         state.error = null;
       })
       .addCase(createNewInvoice.rejected, (state, action) => {
-        state.error = action.payload;
+        state.error = action.payload.response.data;
         state.isLoading = false;
       })
       .addCase(fetchInvoices.pending, (state) => {
@@ -106,13 +124,27 @@ const invoiceSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(deleteInvoiceThunk.fulfilled, (state, action) => {
-        state.invoices = action.payload;
+        console.log("payload =>", action.payload.status);
+        state.status = action.payload.status;
         state.isLoading = false;
         state.error = null;
       })
       .addCase(deleteInvoiceThunk.rejected, (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
+      })
+      .addCase(patchInvoiceThunk.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(patchInvoiceThunk.fulfilled, (state, action) => {
+        console.log('patch action', action.payload);
+        // state.invoices = action.payload;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(patchInvoiceThunk.rejected, (state) => {
+        state.isLoading = false;
+        state.error = null;
       });
   },
 });
