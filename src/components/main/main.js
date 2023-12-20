@@ -1,8 +1,18 @@
+import { useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
 import { Sidebar } from "../index";
-import React from "react";
 
 export default function Main() {
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <div className="flex">
       <div className="w-1/12">
