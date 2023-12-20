@@ -49,7 +49,7 @@ const worker = {
 export default function FormAdd() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { error, status, isLoading } = useSelector((state) => state.invoice);
+  const { error, isLoading } = useSelector((state) => state.invoice);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [formAttempt, setFormAttempt] = useState(0);
@@ -61,7 +61,6 @@ export default function FormAdd() {
   const dateNow = new Date();
   const date = dateNow.toLocaleDateString();
 
-  console.log(status);
   const handleSubmit = (values) => {
     setFormAttempt((prev) => prev + 1);
     dispatch(
@@ -76,23 +75,24 @@ export default function FormAdd() {
         description: values.clientDesc,
         price: values.price,
       })
-    );
+    ).then((action) => {
+      if (action.type === "invoice/create/fulfilled") {
+        navigate("/");
+      }
+    });
   };
 
   useEffect(() => {
     if (error) {
       setIsModalVisible(true);
     }
-    if (status === 201) {
-      navigate("/");
-    }
-  }, [error, formAttempt, status]);
+  }, [error, formAttempt]);
 
   return (
     <>
       <ModalError
         open={isModalVisible}
-        onCancel={setIsModalVisible}
+        onCancel={() => setIsModalVisible(false)}
         setIsModalVisible={setIsModalVisible}
         footer={false}
         title="Error"
@@ -184,7 +184,11 @@ export default function FormAdd() {
                     type="submit"
                     className="px-8 py-4 rounded-full text-white font-spartan login-button text-base"
                   >
-                    {isLoading ? <Loader className="loader" /> : "Save & Submit"}
+                    {isLoading ? (
+                      <Loader className="loader" />
+                    ) : (
+                      "Save & Submit"
+                    )}
                   </Button>
                 </div>
               </Form>

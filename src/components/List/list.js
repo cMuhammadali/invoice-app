@@ -1,7 +1,7 @@
 import { fetchInvoices } from "../../services/InvoiceSlice/InvoiceSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import { Loader, LoaderSecond } from "../index";
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import "./List.css";
 
@@ -14,7 +14,6 @@ export default function List() {
     dispatch(fetchInvoices());
   }, [dispatch]);
 
-  console.log(invoices);
   return (
     <div className="w-full h-96">
       <div className="text-center font-spartan text-xl">{error}</div>

@@ -50,9 +50,6 @@ export default function EditForm({ id, paid }) {
     if (error) {
       setIsModalVisible(true);
     }
-    if (status === 200) {
-      navigate(-1);
-    }
   }, [error, status]);
 
   const handleSubmitPatch = (values) => {
@@ -60,9 +57,13 @@ export default function EditForm({ id, paid }) {
       putInvoiceThunk({
         id: id,
         invoiceData: values,
-        paid
+        paid,
       })
-    );
+    ).then((action) => {
+      if (action.type === "invoice/put/fulfilled") {
+        navigate(-1);
+      }
+    });
   };
 
   return (
