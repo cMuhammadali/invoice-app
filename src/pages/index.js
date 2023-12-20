@@ -1,6 +1,9 @@
-export { default as InvoicePage } from './invoice-page/invoice-page';
-export { default as EditInvoice } from "./edit-invoice/edit-invoice";
-export { default as AddInvoice } from "./add-invoice/add-invoice";
-export { default as EditForm } from "./edit-invoice/edit-form";
-export { default as Login } from "./login/login";
-export { default as Home } from "./home/home";
+export { default as InvoiceCenter } from './InvoicePage/InvoiceCenter';
+export { default as EditInvoice } from "./EditInvoice/EditInvoice";
+export { default as InvoicePage } from './InvoicePage/InvoicePage';
+export { default as OneInvoice } from './InvoicePage/OneInvoice';
+export { default as AddInvoice } from "./AddInvoice/AddInvoice";
+export { default as EditForm } from "./EditInvoice/EditForm";
+export { default as FormAdd } from './AddInvoice/FormAdd';
+export { default as Login } from "./Login/Login";
+export { default as Home } from "./Home/Home";

@@ -1,103 +1,84 @@
-import { useSelector } from "react-redux";
+import { fetchInvoices } from "../../services/InvoiceSlice/InvoiceSlice";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import "./list.css";
+import { Loader, LoaderSecond } from "../index";
+import { useEffect } from "react";
+import "./List.css";
 
 export default function List() {
-  const invoices = useSelector((state) => state.todo);
+  const token = localStorage.getItem("token");
+  const dispatch = useDispatch();
+  const { invoices, isLoading, error } = useSelector((state) => state.invoice);
 
+  useEffect(() => {
+    dispatch(fetchInvoices());
+  }, [dispatch]);
+
+  console.log(invoices);
   return (
-    <div className="w-full h-96 mt-14">
-      <div className="p-6 rounded-md flex text-center items-center mt-6 mr-2 ml-2 shadow-box">
-        <span className="flex-auto font-spartan">
-          <span className="text-ink font-bold">#</span>
-          <span className="font-bold">RT3080</span>
-        </span>
-        <span className="flex-auto font-spartan text-listText">
-          Due 19 Aug 2021
-        </span>
-        <span className="flex-auto font-spartan text-listText">
-          Jensen Huang
-        </span>
-        <span className="flex-auto font-spartan font-bold">£ 1,800.90</span>
-        <span className="flex-auto font-spartan p-2 rounded-md bg-whiteGreen items-center relative">
-          <span className="dot-green bg-greenPaid rounded-full"></span>
-          {/* <img src="/src/assets/icons/GreenCircle.svg" alt="green circle" className="absolute left-8 top-4"/> */}
-          <span className="ml-2 font-bold text-greenPaid">Paid</span>
-        </span>
-        <Link to={"/invoice-page/XM9141"} className="p-4">
-          <img
-            style={{ cursor: "pointer" }}
-            className="h-4 font-spartan"
-            src="/src/assets/icons/Path 5.svg"
-            alt="path"
-          />
-        </Link>
-      </div>
-      <div className="p-6 rounded-md flex text-center items-center mt-6 mr-2 ml-2 shadow-box">
-        <span className="flex-auto font-spartan">
-          <span className="text-ink font-bold">#</span>
-          <span className="font-bold">RT3080</span>
-        </span>
-        <span
-          className="flex-auto font-spartan"
-          style={{ color: "rgba(126, 136, 195, 1)" }}
-        >
-          Due 19 Aug 2021
-        </span>
-        <span
-          className="flex-auto font-spartan"
-          style={{ color: "rgba(126, 136, 195, 1)" }}
-        >
-          Jensen Huang
-        </span>
-        <span className="flex-auto font-spartan font-bold">£ 1,800.90</span>
-        <span className="flex-auto font-spartan p-2 rounded-md bg-whiteOrange">
-          <span className="dot-orange bg-orangePending rounded-full"></span>
-          <span className="ml-2 font-bold text-orangePending">Pending</span>
-        </span>
-        <img
-          style={{ cursor: "pointer" }}
-          className="flex-auto h-4 font-spartan"
-          src="/src/assets/icons/Path 5.svg"
-          alt="path"
-        />
-      </div>
-      {invoices?.map((value) => {
-        console.log("value", value?.values?.clientDesc);
-        return (
-          <div className="p-6 rounded-md flex text-center items-center mt-6 mr-2 ml-2 shadow-box">
-            <span className="flex-auto font-spartan">
-              <span className="text-ink font-bold">#</span>
-              <span className="font-bold">RT3080</span>
-            </span>
-            <span
-              className="flex-auto font-spartan"
-              style={{ color: "rgba(126, 136, 195, 1)" }}
+    <div className="w-full h-96">
+      <div className="text-center font-spartan text-xl">{error}</div>
+      {isLoading ? (
+        <LoaderSecond className="loader w-10 h-10" />
+      ) : (
+        invoices?.map((item, index) => {
+          return (
+            <div
+              className="p-6 rounded-md flex text-center items-center mt-6 mr-2 ml-2 shadow-box"
+              key={item.id}
             >
-              {value?.values?.clientDueDate}
-            </span>
-            <span
-              className="flex-auto font-spartan"
-              style={{ color: "rgba(126, 136, 195, 1)" }}
-            >
-              {value?.values?.clientName}
-            </span>
-            <span className="flex-auto font-spartan font-bold">
-              {value?.values?.price}
-            </span>
-            <span className="flex-auto font-spartan p-2 rounded-md bg-whiteOrange">
-              <span className="dot-orange bg-orangePending rounded-full"></span>
-              <span className="ml-2 font-bold text-orangePending">Pending</span>
-            </span>
-            <img
-              style={{ cursor: "pointer" }}
-              className="flex-auto h-4 font-spartan"
-              src="/src/assets/icons/Path 5.svg"
-              alt="path"
-            />
-          </div>
-        );
-      })}
+              <span className="flex-auto font-spartan">
+                <span className="text-ink font-bold">#{index + 1}</span>
+              </span>
+              <span className="flex-auto font-spartan text-listText">
+                {item.createdDate.slice(0, 10)}
+              </span>
+              <span className="flex-auto font-spartan text-listText">
+                {item.to}
+              </span>
+              <span className="flex-auto font-spartan font-bold">
+                £ {item.price}
+              </span>
+              {item.paid ? (
+                <>
+                  <span className="flex-auto font-spartan p-2 rounded-md bg-whiteGreen items-center relative">
+                    <span className="dot-green bg-greenPaid rounded-full"></span>
+                    <span className="ml-2 font-bold text-greenPaid">Paid</span>
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="flex-auto font-spartan p-2 rounded-md bg-whiteOrange items-center relative">
+                    <span className="dot-orange bg-orangePending rounded-full"></span>
+                    <span className="ml-2 font-bold text-orangePending">
+                      Pending
+                    </span>
+                  </span>
+                </>
+              )}
+              {token ? (
+                <Link to={`/invoice-page/${item.id}`} className="p-4">
+                  <img
+                    style={{ cursor: "pointer" }}
+                    className="h-4 font-spartan"
+                    src="/src/assets/icons/Path 5.svg"
+                    alt="path"
+                  />
+                </Link>
+              ) : (
+                <Link to={"/login"} className="p-4">
+                  <img
+                    style={{ cursor: "pointer" }}
+                    className="h-4 font-spartan"
+                    src="/src/assets/icons/Path 5.svg"
+                    alt="path"
+                  />
+                </Link>
+              )}
+            </div>
+          );
+        })
+      )}
     </div>
   );
 }

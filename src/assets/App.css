@@ -1,0 +1,12 @@
+@font-face {
+  font-family: spartan;
+  src: url("../assets/fonts/LeagueSpartan-Medium.ttf");
+}
+
+*{
+  font-family: spartan;
+}
+
+.font-spartan {
+  font-family: spartan !important;
+}
