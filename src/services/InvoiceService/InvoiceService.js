@@ -21,7 +21,6 @@ export const getOneInvoices = async (id) => {
 export const createInvoice = async (invoiceData) => {
   try {
     const response = await axiosInstance.post("/invoices", invoiceData);
-    console.log("response 1 =>", response);
     return response;
   } catch (error) {
     throw error;
