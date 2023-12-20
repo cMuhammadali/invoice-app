@@ -89,7 +89,7 @@ function Login() {
                     type="submit"
                     className="px-8 py-4 rounded-full text-white font-spartan text-lg login-button"
                   >
-                    {isLoading ? <Loader /> : "Login"}
+                    {isLoading ? <Loader className="loader" a/> : "Login"}
                   </Button>
                 </div>
               </Form>
