@@ -1,4 +1,9 @@
-import { Button, LoaderSecond, ModalDelete } from "../../components/index";
+import {
+  Button,
+  Loader,
+  LoaderSecond,
+  ModalDelete,
+} from "../../components/index";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchInvoices,
@@ -12,8 +17,7 @@ import "./OneInvoice.css";
 export default function OneInvoice({ id }) {
   const dispatch = useDispatch();
   const oneInvoice = useSelector((state) => state.invoice.oneInvoice);
-
-  const [isPaid, setIsPaid] = useState(null);
+  const { isLoading } = useSelector((state) => state.invoice);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -21,12 +25,7 @@ export default function OneInvoice({ id }) {
   }, [dispatch]);
 
   const handlePatch = () => {
-    console.log("Clicked");
-    dispatch(
-      patchInvoiceThunk(id, {
-        paid: true,
-      })
-    );
+    dispatch(patchInvoiceThunk(id));
   };
 
   return (
@@ -89,7 +88,7 @@ export default function OneInvoice({ id }) {
                     className="paid-button px-7 py-4 rounded-full font-spartan text-white"
                     onClick={handlePatch}
                   >
-                    Mark as Paid
+                    {isLoading ? <Loader className="loader" /> : "Mark as Paid"}
                   </Button>
                 )}
               </div>

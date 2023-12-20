@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 
+const token = localStorage.getItem("token");
+
 export default function Sidebar() {
   return (
     <div className="h-screen text-white text-center rounded-r-[16px] relative bg-sidebarDark">
       <div className="h-24 rounded-tr-[16px] bg-inkHeader1"></div>
-      <Link to={'/'}>
+      <Link to={"/"}>
         <img
           src="/src/assets/icons/Combined Shape.svg"
           alt="Logo"
@@ -24,11 +26,19 @@ export default function Sidebar() {
       </div>
       <div className="w-full absolute bottom-0 h-28 border-t-2 border-ink">
         <div className="flex items-center justify-center">
-          <img
-            src="/src/assets/images/Oval.png"
-            alt="avatar"
-            className="h-12 absolute top-8"
-          />
+          {token ? (
+            <img
+              src="/src/assets/images/Oval.png"
+              alt="avatar"
+              className="h-12 absolute top-8"
+            />
+          ) : (
+            <Link to={"/login"}>
+              <span className="font-spartan font-medium text-base absolute bottom-12 left-0 right-0">
+                Login
+              </span>
+            </Link>
+          )}
         </div>
       </div>
     </div>

@@ -1,13 +1,15 @@
 import { fetchOneInvoices } from "../../services/InvoiceSlice/InvoiceSlice";
 import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { EditForm } from "../Index";
 import { useEffect } from "react";
 
 export default function EditInvoice() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const oneInvoice = useSelector((state) => state.invoice.oneInvoice);
   const { id } = useParams();
+  let paid = oneInvoice?.paid;
 
   function goBack() {
     navigate(-1);
@@ -29,7 +31,7 @@ export default function EditInvoice() {
       </div>
 
       <div className="mt-4">
-        <EditForm />
+        <EditForm id={id} paid={paid} />
       </div>
     </div>
   );

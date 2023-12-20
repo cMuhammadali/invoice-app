@@ -10,7 +10,7 @@ import {
   Button,
   FormItem,
   Input,
-  LoaderSecond,
+  Loader,
   ModalError,
 } from "../../components/index";
 import dayjs from "dayjs";
@@ -184,7 +184,7 @@ export default function FormAdd() {
                     type="submit"
                     className="px-8 py-4 rounded-full text-white font-spartan login-button text-base"
                   >
-                    {isLoading ? <LoaderSecond /> : "Save & Submit"}
+                    {isLoading ? <Loader className="loader" /> : "Save & Submit"}
                   </Button>
                 </div>
               </Form>

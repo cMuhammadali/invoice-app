@@ -22,16 +22,14 @@ export default function ModalDelete({ isOpen, setIsOpen, title, id, body }) {
       setIsErrorModal(false);
     }
     if (status === 200) {
-      console.log('worked');
-      console.log("status if", status);
       navigate("/");
     }
   }, [error, status]);
 
-  console.log("status", status);
   return (
     <>
       <ModalError
+        onCancel={() => setIsErrorModal(false)}
         open={isErrorModal}
         setIsModalVisible={setIsErrorModal}
         title="Error"
