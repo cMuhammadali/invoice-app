@@ -1,9 +1,3 @@
-import {
-  Button,
-  Loader,
-  LoaderSecond,
-  ModalDelete,
-} from "../../components/index";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchInvoices,
@@ -12,6 +6,12 @@ import {
 import { useEffect, useState } from "react";
 import InvoiceCenter from "./InvoiceCenter";
 import { Link } from "react-router-dom";
+import {
+  Button,
+  Loader,
+  LoaderSecond,
+  ModalDelete,
+} from "../../components/index";
 import "./OneInvoice.css";
 
 export default function OneInvoice({ id }) {

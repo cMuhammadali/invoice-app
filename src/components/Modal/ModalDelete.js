@@ -12,7 +12,11 @@ export default function ModalDelete({ isOpen, setIsOpen, title, id, body }) {
   const { isLoading, error, status } = useSelector((state) => state.invoice);
 
   const handleDelete = () => {
-    dispatch(deleteInvoiceThunk(id));
+    dispatch(deleteInvoiceThunk(id)).then((action) => {
+      if (action.type === "invoice/delete/fulfilled") {
+        navigate("/");
+      }
+    });
   };
 
   useEffect(() => {
@@ -20,9 +24,6 @@ export default function ModalDelete({ isOpen, setIsOpen, title, id, body }) {
       setIsErrorModal(true);
     } else {
       setIsErrorModal(false);
-    }
-    if (status === 200) {
-      navigate("/");
     }
   }, [error, status]);
 
