@@ -35,9 +35,9 @@ export default function ModalDelete({ isOpen, setIsOpen, title, id, body }) {
         setIsModalVisible={setIsErrorModal}
         title="Error"
         footer={false}
+        buttonChildren
       >
         {error?.response?.data}
-        <span className="text-ink ml-2">login</span>
       </ModalError>
       <Modal
         title={title}

@@ -1,27 +1,17 @@
-import { fetchInvoices } from "../../services/InvoiceSlice/InvoiceSlice";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../index";
 import "./Navbar.css";
 
-export default function Navbar() {
+export default function Navbar({ invoicesList, token, handleFilter }) {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [token, setToken] = useState(null);
-  const dispatch = useDispatch();
-  const { invoices } = useSelector((state) => state.invoice);
-
-  useEffect(() => {
-    dispatch(fetchInvoices());
-    setToken(localStorage.getItem("token"))
-  }, [dispatch]);
 
   return (
     <div className="w-full flex">
       <div className="flex-auto text-left">
         <h1 className="font-spartan text-4xl font-bold">Invoices</h1>
         <p className="text-ink">
-          There are {invoices ? invoices.length : 0} total invoices
+          There are {invoicesList ? invoicesList.length : 0} total invoices
         </p>
       </div>
 
@@ -59,15 +49,27 @@ export default function Navbar() {
                 <div className="p-3 shadow-xl w-40 absolute rounded-md z-50 select-box">
                   <ul>
                     <li className="font-spartan text-sm mt-2 cursor-pointer">
-                      <input type="checkbox" />{" "}
+                      <input
+                        value={"all"}
+                        type="checkbox"
+                        onChange={(e) => handleFilter(e.target.value)}
+                      />{" "}
                       <span className="ml-3">All</span>
                     </li>
                     <li className="font-spartan text-sm mt-2">
-                      <input type="checkbox" />{" "}
+                      <input
+                        type="checkbox"
+                        value={"pending"}
+                        onChange={(e) => handleFilter(e.target.value)}
+                      />{" "}
                       <span className="ml-3">Pending</span>
                     </li>
                     <li className="font-spartan text-sm mt-2">
-                      <input type="checkbox" />{" "}
+                      <input
+                        type="checkbox"
+                        value={"paid"}
+                        onChange={(e) => handleFilter(e.target.value)}
+                      />{" "}
                       <span className="ml-3">Paid</span>
                     </li>
                   </ul>
