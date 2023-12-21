@@ -80,6 +80,18 @@ export const putInvoiceThunk = createAsyncThunk(
   }
 );
 
+export const filterInvoice = createAsyncThunk(
+  "invoice/filter",
+  async (status, { rejectWithValue }) => {
+    try {
+      console.log("status =>", status);
+      return status;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 const invoiceSlice = createSlice({
   name: "invoice",
   initialState: {
@@ -89,7 +101,24 @@ const invoiceSlice = createSlice({
     isLoading: false,
     oneInvoice: null,
   },
-  reducers: {},
+  reducers: {
+    // filterInvoice: (state, action) => {
+    //   console.log(action.payload);
+    //   switch (action.payload) {
+    //     case "all":
+    //       console.log("all =>", state.invoices);
+    //       return state;
+    //     case "pending":
+    //       const result = state.invoices.filter((invoices) =>
+    //         console.log("invoices", invoices)
+    //       );
+    //       console.log("result", result);
+    //       return { ...state, invoices: result };
+    //     default:
+    //       return state;
+    //   }
+    // },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(createNewInvoice.pending, (state) => {
@@ -97,7 +126,6 @@ const invoiceSlice = createSlice({
       })
       .addCase(createNewInvoice.fulfilled, (state, action) => {
         state.invoices = [...state.invoices, action.payload];
-        state.status = 201;
         state.isLoading = false;
         state.error = null;
       })
@@ -160,9 +188,43 @@ const invoiceSlice = createSlice({
         state.oneInvoice = action.payload;
         state.isLoading = false;
         state.error = null;
-        state.status = 200;
       })
       .addCase(putInvoiceThunk.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(filterInvoice.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(filterInvoice.fulfilled, (state, action) => {
+        console.log("payload =>", action.payload);
+
+        switch (action.payload) {
+          case "all":
+            return { ...state, isLoading: false };
+
+          case "pending":
+            const resultPending = state.invoices.filter(
+              (invoice) => invoice.paid === false
+            );
+            console.log("result =>", resultPending);
+            return { ...state, invoices: resultPending, isLoading: false };
+
+          case "paid":
+            const resultPaid = state.invoices.filter(
+              (invoice) => invoice.paid === true
+            );
+            console.log("resultPaid =>", resultPaid);
+            return { ...state, invoices: resultPaid, isLoading: false };
+
+          default:
+            console.log("Default case =>", action.payload);
+            return { ...state, invoices: action.payload, isLoading: false };
+        }
+      })
+
+      .addCase(filterInvoice.rejected, (state, action) => {
+        console.error("Error in filterInvoice:", action.payload);
         state.error = action.payload;
         state.isLoading = false;
       });
